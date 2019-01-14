@@ -7,7 +7,6 @@
 const bcrypt = require('bcrypt')
 const router = require('koa-router')({ sensitive: true })
 
-// const Users = require('../../models/users')
 const User = require('../../db/users')
 
 router.prefix('/api/users')
@@ -15,10 +14,10 @@ router.prefix('/api/users')
 router.post('/', async (ctx, next) => {
   const { email, password, name } = ctx.request.body
 
-  const enc_pass = bcrypt.hashSync(password, 10)
+  const encPass = bcrypt.hashSync(password, 10)
 
   const result = await User.create({
-    password: enc_pass,
+    password: encPass,
     email,
     name
   })
