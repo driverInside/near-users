@@ -43,9 +43,10 @@ router.post('/', async (ctx, next) => {
     }
     return
   }
-    
+
+  ctx.status = 201
   ctx.body = {
-    message: 'ok',
+    success: true,
     email
   }
 })

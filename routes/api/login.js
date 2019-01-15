@@ -12,15 +12,15 @@ const User = require('../../db/users')
 
 router.prefix('/api/login')
 
-router.post('/', async (ctx, next) => {
+router.post('/', async (ctx, next) => {0
   const { email, password } = ctx.request.body
 
   const user = await User.findOne({ where: { email } })
 
   if (!user) {
-    ctx.status = 400
+    ctx.status = 401
     ctx.body = {
-      success: false
+      error: 'Wrong user or password'
     }
     return
   }
@@ -34,8 +34,9 @@ router.post('/', async (ctx, next) => {
     return
   }
 
+  ctx.status = 401
   ctx.body = {
-    message: 'ok'
+    error: 'Wrong user or password'
   }
 })
 

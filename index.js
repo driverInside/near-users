@@ -24,7 +24,7 @@ app.use(bodyParser({
 app.use(routes.routes(), routes.allowedMethods())
 
 app.listen(4100, () => {
-    console.log(`server listening on port 4100`)
+  console.log(`server listening on port 4100`)
 })
 
 module.exports = app
